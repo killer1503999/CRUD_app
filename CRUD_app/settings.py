@@ -15,6 +15,7 @@ import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+print(BASE_DIR)
 
 
 # Quick-start development settings - unsuitable for production
@@ -24,9 +25,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-x*ge=e5c2g2zg0)6s4uzm44-(q975my5cx@m94jsv_7!%xu-%z'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -79,10 +80,24 @@ WSGI_APPLICATION = 'CRUD_app.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'mssql',
+        "NAME": "Nilesh_Crud_Database",
+        "USER": "dbadmin",
+        "PASSWORD": "db@admin12345",
+        "HOST": "assessmentserverget.database.windows.net",
+        'Trusted_Connection': 'no',
+        'OPTIONS': {
+            'driver': 'ODBC Driver 18 for SQL Server',
+        }
     }
 }
 
@@ -120,7 +135,7 @@ TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
-USE_TZ = True
+USE_TZ = False
 
 
 # Static files (CSS, JavaScript, Images)
@@ -135,3 +150,22 @@ MEDIA_URL = '/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATIC_ROOT = 'static'
+
+# DEFAULT_FILE_STORAGE = 'backend.utils.custom_azure.AzureMediaStorage'
+# STATICFILES_STORAGE = 'backend.utils.custom_azure.AzureStaticStorage'
+
+# STATIC_LOCATION = "static"
+# MEDIA_LOCATION = "nileshimagescontaine"
+
+# AZURE_ACCOUNT_NAME = "assessmentstgacc"
+# AZURE_ACCOUNT_KEY = "eiyYAT6BkNDxxQ1KSFDEjkJ87GXUvAqO1By/bW1m0WTN0MWp5PSFrDYw0lAfHza17CCpUEYYTNhp+AStufDnyw=="
+# AZURE_CUSTOM_DOMAIN = f'{AZURE_ACCOUNT_NAME}.blob.core.windows.net'
+# AZURE_BLOB_URL = f'https://{AZURE_CUSTOM_DOMAIN}'
+
+# AZURE_OVERWRITE_FILES = True
+
+# STATIC_ROOT = f'https://{AZURE_CUSTOM_DOMAIN}/{STATIC_LOCATION}/'
+# STATIC_URL = f'https://{AZURE_CUSTOM_DOMAIN}/{STATIC_LOCATION}/'
+# MEDIA_URL = f'https://{AZURE_CUSTOM_DOMAIN}/{MEDIA_LOCATION}/'
+
+# DATA_PATH = 'data'
