@@ -94,7 +94,7 @@ DATABASES = {
         "USER": "dbadmin",
         "PASSWORD": "db@admin12345",
         "HOST": "assessmentserverget.database.windows.net",
-        'Trusted_Connection': 'no',
+        'Trusted_Connection': 'yes',
         'OPTIONS': {
             'driver': 'ODBC Driver 18 for SQL Server',
         }
@@ -169,3 +169,10 @@ STATIC_ROOT = 'static'
 # MEDIA_URL = f'https://{AZURE_CUSTOM_DOMAIN}/{MEDIA_LOCATION}/'
 
 # DATA_PATH = 'data'
+
+
+AZURE_STORAGE_ACCOUNT = "https://assessmentstgacc.blob.core.windows.net/?sv=2021-06-08&ss=bfqt&srt=sco&sp=rwdlacupiytfx&se=2022-10-01T16:50:11Z&st=2022-09-07T08:50:11Z&spr=https&sig=9jUrQufsLJGf7fRvQfa919DaYliYw3SMtjEGFU7V0eo%3D"
+# AZURE_VAULT_ACCOUNT = env('AZURE_VAULT_ACCOUNT')
+# AZURE_STORAGE_KEY_NAME = env('AZURE_STORAGE_KEY_NAME')
+AZURE_APP_BLOB_NAME = "nileshimagescontainer"
+AZURE_BLOB_PATH = "https://assessmentstgacc.blob.core.windows.net/nileshimagescontainer/"
