@@ -92,11 +92,11 @@ DATABASES = {
         'ENGINE': 'mssql',
         "NAME": "Nilesh_Crud_Database",
         "USER": "dbadmin",
-        "PASSWORD": "db@admin12345",
+        "PASSWORD": "Admin123",
         "HOST": "assessmentserverget.database.windows.net",
         'Trusted_Connection': 'yes',
         'OPTIONS': {
-            'driver': 'ODBC Driver 18 for SQL Server',
+            # 'driver': 'ODBC Driver 18 for SQL Server',
         }
     }
 }

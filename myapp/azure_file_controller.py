@@ -2,8 +2,8 @@ from io import BytesIO
 import uuid
 from pathlib import Path
 
-from azure.identity import DefaultAzureCredential
-from azure.keyvault.secrets import SecretClient
+# from azure.identity import DefaultAzureCredential
+# from azure.keyvault.secrets import SecretClient
 from azure.storage.blob import BlobClient
 from django.conf import settings
 
