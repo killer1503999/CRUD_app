@@ -94,12 +94,24 @@ DATABASES = {
         "USER": "dbadmin",
         "PASSWORD": "Admin123",
         "HOST": "assessmentserverget.database.windows.net",
-        'Trusted_Connection': 'yes',
+        'Trusted_Connection': 'no',
         'OPTIONS': {
             # 'driver': 'ODBC Driver 18 for SQL Server',
+            # 'extra_params': "Authentication=ActiveDirectoryMsi;Encrypt=yes;TrustServerCertificate=no"
         }
     }
 }
+# To connect Azure SQL DB using MSI (Managed Service Identity)
+# {
+#     'ENGINE': 'mssql',
+#     'HOST': 'xyz.database.windows.net',
+#     'NAME': 'mydb',
+#     'PORT': '',
+#     'Trusted_Connection': 'no',
+#     'OPTIONS': {
+#         'driver': 'ODBC Driver 17 for SQL Server',
+#         'extra_params': "Authentication=ActiveDirectoryMsi;Encrypt=yes;TrustServerCertificate=no" }
+# }
 
 
 # Password validation
