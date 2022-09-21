@@ -96,7 +96,7 @@ DATABASES = {
         "HOST": "assessmentserverget.database.windows.net",
         'Trusted_Connection': 'no',
         'OPTIONS': {
-            # 'driver': 'ODBC Driver 18 for SQL Server',
+            'driver': 'ODBC Driver 18 for SQL Server',
             # 'extra_params': "Authentication=ActiveDirectoryMsi;Encrypt=yes;TrustServerCertificate=no"
         }
     }
@@ -183,7 +183,7 @@ STATIC_ROOT = 'static'
 # DATA_PATH = 'data'
 
 
-AZURE_STORAGE_ACCOUNT = "https://assessmentstgacc.blob.core.windows.net/?sv=2021-06-08&ss=bfqt&srt=sco&sp=rwdlacupiytfx&se=2022-10-01T16:50:11Z&st=2022-09-07T08:50:11Z&spr=https&sig=9jUrQufsLJGf7fRvQfa919DaYliYw3SMtjEGFU7V0eo%3D"
+AZURE_STORAGE_ACCOUNT = "https://assessmentstgacc.blob.core.windows.net/nileshimagescontainer?sp=racwdli&st=2022-09-13T18:32:43Z&se=2022-12-01T02:32:43Z&spr=https&sv=2021-06-08&sr=c&sig=89PKv9X0HmgyClXhtfdesEt%2BsH30DHIPxcrvwrbye4M%3D"
 # AZURE_VAULT_ACCOUNT = env('AZURE_VAULT_ACCOUNT')
 # AZURE_STORAGE_KEY_NAME = env('AZURE_STORAGE_KEY_NAME')
 AZURE_APP_BLOB_NAME = "nileshimagescontainer"

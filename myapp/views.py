@@ -182,12 +182,14 @@ class productDetails(APIView):
             print("put request*******************")
             if request.data['image']:
                 file = request.FILES['image']
+            #     print(file)
                 # print(type(file))
             #       ext = Path(file.name).suffix
             #       #     print(data['id'])
             #       #     print()
 
                 new_file = upload_file_to_blob(file)
+                print(new_file)
                 # print(new_file)
                 data.image.name = new_file
                 request.data['image'].name = new_file
