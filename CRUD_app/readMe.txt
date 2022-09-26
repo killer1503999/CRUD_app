@@ -5,3 +5,7 @@ import os
 ...
 SECRET_KEY = os.environ['SECRET_KEY']
 
+git add .
+git commit -m ""
+git push origin master
+
