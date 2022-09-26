@@ -2,21 +2,52 @@ from io import BytesIO
 import uuid
 from pathlib import Path
 
-# from azure.identity import DefaultAzureCredential
-# from azure.keyvault.secrets import SecretClient
+from azure.identity import DefaultAzureCredential
+from azure.identity import ManagedIdentityCredential
+from azure.keyvault.secrets import SecretClient
 from azure.storage.blob import BlobClient
 from django.conf import settings
 
 from . import models
 from azure.storage.blob import BlobServiceClient
+import logging
+import sys
 
+# # Create a logger for the 'azure' SDK
+# logger = logging.getLogger('azure')
+# logger.setLevel(logging.DEBUG)
+# print("****************************************************************881111111111111111111******************************")
+
+# # Configure a console output
+# handler = logging.StreamHandler(stream=sys.stdout)
+# logger.addHandler(handler)
+# print("**********************************************22222222222222222222222222222222**********************************")
 
 ALLOWED_EXTENTIONS = ['.jpg', '.jpeg', '.jpg']
+# default_credential = ManagedIdentityCredential()
+# vault_url = "https://nileshkeyvault.vault.azure.net/"
+# secret_client = SecretClient(
+#     vault_url="https://nileshkeyvault.vault.azure.net", credential=default_credential, logging_enable=True)
+# storage_credentials = secret_client.get_secret("name")
+# print("*******************************************************########333333333333333333333333333333********************************")
+# # # print(storage_credentials)
+# # # print(storage_credentials.value)
+# print(secret_client)
+# # secret_properties = secret_client.list_properties_of_secrets()
+
+# for secret_property in secret_properties:
+#     # the list doesn't include values or versions of the secrets
+#     print(secret_property.name)
+# secret = secret_client.set_secret("secret-name", "secret-value")
+
+# print(secret.name)
+# print(secret.value)
+# print(secret.properties.version)
 
 
 def create_blob_client(file_name):
 
-    #     default_credential = DefaultAzureCredential()
+    #   default_credential = DefaultAzureCredential()
 
     #     secret_client = SecretClient(
     #         vault_url=settings.AZURE_VAULT_ACCOUNT, credential=default_credential
@@ -69,6 +100,7 @@ def upload_file_to_blob(file):
     file_name = f"{file_prefix}{ext}"
     file_content = file.read()
     file_io = BytesIO(file_content)
+    print(file_name)
     blob_client = create_blob_client(file_name=file_name)
     blob_client.upload_blob(data=file_io)
 
@@ -76,7 +108,7 @@ def upload_file_to_blob(file):
 #                                   blob_name=file_name,
 #                                   x_ms_meta_name_values={"factoryId": FactoryId})
     file_object = file_name
-    print("file uploaded to", file_object)
+    print("file uploaded to", file_object, file)
 #     blob_service_client = BlobServiceClient(
     #   account_url=settings.AZURE_STORAGE_ACCOUNT, credential=None)
 #     blob_service_client.set_blob_metadata(container_name=settings.AZURE_APP_BLOB_NAME,

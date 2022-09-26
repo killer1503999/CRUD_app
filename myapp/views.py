@@ -220,8 +220,8 @@ class productDetails(APIView):
             #       type(serialzernew.data["id"]))
             if serialzernew.data["id"] == productserializer.data["factoryName"]:
                 #     print(data.image.name)
-                check = delete_blob_client(str(data.image.name))
                 data.delete()
+                check = delete_blob_client(str(data.image.name))
                 print(str(data.image.name))
                 return Response({"message": "deleted"})
             return Response({"message": "id requested not in factory"})

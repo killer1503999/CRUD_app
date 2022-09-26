@@ -11,7 +11,9 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
+from .keyvaultfile import *
 import os
+from .Resources import *
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -90,10 +92,11 @@ WSGI_APPLICATION = 'CRUD_app.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'mssql',
-        "NAME": "Nilesh_Crud_Database",
-        "USER": "dbadmin",
-        "PASSWORD": "Admin123",
-        "HOST": "assessmentserverget.database.windows.net",
+        "NAME": DBName,  # env variable
+        "USER": gets_secerts(vault_url, "DBusername"),  # keyvault
+        # keyvault
+        "PASSWORD": gets_secerts(vault_url, "DBpassword"),
+        "HOST": DB_host,  # env variable
         'Trusted_Connection': 'no',
         'OPTIONS': {
             'driver': 'ODBC Driver 18 for SQL Server',
@@ -136,6 +139,7 @@ CORS_ALLOWED_ORIGINS = [
     "https://sub.example.com",
     "http://localhost:4200",
     "http://127.0.0.1:4200",
+    "https://nileshangularfrontend.azurewebsites.net"
 ]
 
 # Internationalization
@@ -181,10 +185,16 @@ STATIC_ROOT = 'static'
 # MEDIA_URL = f'https://{AZURE_CUSTOM_DOMAIN}/{MEDIA_LOCATION}/'
 
 # DATA_PATH = 'data'
-
-
-AZURE_STORAGE_ACCOUNT = "https://assessmentstgacc.blob.core.windows.net/nileshimagescontainer?sp=racwdli&st=2022-09-13T18:32:43Z&se=2022-12-01T02:32:43Z&spr=https&sv=2021-06-08&sr=c&sig=89PKv9X0HmgyClXhtfdesEt%2BsH30DHIPxcrvwrbye4M%3D"
+key_vault = "nileshkeyvault"
+AZURE_STORAGE_ACCOUNT = gets_secerts(vault_url, "BlobSasUrl")
 # AZURE_VAULT_ACCOUNT = env('AZURE_VAULT_ACCOUNT')
 # AZURE_STORAGE_KEY_NAME = env('AZURE_STORAGE_KEY_NAME')
-AZURE_APP_BLOB_NAME = "nileshimagescontainer"
-AZURE_BLOB_PATH = "https://assessmentstgacc.blob.core.windows.net/nileshimagescontainer/"
+AZURE_APP_BLOB_NAME = AZURE_APP_BLOB_NAME
+AZURE_BLOB_PATH = "https://assessmentstgacc.blob.core.windows.net/nileshimagescontainer/nileshimagescontainer"
+
+# keyvault
+# AZURE_STORAGE_ACCOUNT = gets_secerts(vault_url, "BlobSasUrl")
+# # AZURE_VAULT_ACCOUNT = env('AZURE_VAULT_ACCOUNT')
+# # AZURE_STORAGE_KEY_NAME = env('AZURE_STORAGE_KEY_NAME')
+# AZURE_APP_BLOB_NAME = "nileshimagescontainer"  # enc variable
+# AZURE_BLOB_PATH = "https://assessmentstgacc.blob.core.windows.net/nileshimagescontainer/"  # env variable
