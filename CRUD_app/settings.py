@@ -17,7 +17,6 @@ from .Resources import *
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-print(BASE_DIR)
 
 
 # Quick-start development settings - unsuitable for production
@@ -93,14 +92,13 @@ DATABASES = {
     'default': {
         'ENGINE': 'mssql',
         "NAME": DBName,  # env variable
-        "USER": gets_secerts(vault_url, "DBusername"),  # keyvault
-        # keyvault
-        "PASSWORD": gets_secerts(vault_url, "DBpassword"),
+        "USER": DB_username,
+        "PASSWORD": DB_password,
         "HOST": DB_host,  # env variable
         'Trusted_Connection': 'no',
         'OPTIONS': {
             'driver': 'ODBC Driver 18 for SQL Server',
-            # 'extra_params': "Authentication=ActiveDirectoryMsi;Encrypt=yes;TrustServerCertificate=no"
+
         }
     }
 }
@@ -167,34 +165,9 @@ MEDIA_URL = '/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATIC_ROOT = 'static'
 
-# DEFAULT_FILE_STORAGE = 'backend.utils.custom_azure.AzureMediaStorage'
-# STATICFILES_STORAGE = 'backend.utils.custom_azure.AzureStaticStorage'
 
-# STATIC_LOCATION = "static"
-# MEDIA_LOCATION = "nileshimagescontaine"
-
-# AZURE_ACCOUNT_NAME = "assessmentstgacc"
-# AZURE_ACCOUNT_KEY = "eiyYAT6BkNDxxQ1KSFDEjkJ87GXUvAqO1By/bW1m0WTN0MWp5PSFrDYw0lAfHza17CCpUEYYTNhp+AStufDnyw=="
-# AZURE_CUSTOM_DOMAIN = f'{AZURE_ACCOUNT_NAME}.blob.core.windows.net'
-# AZURE_BLOB_URL = f'https://{AZURE_CUSTOM_DOMAIN}'
-
-# AZURE_OVERWRITE_FILES = True
-
-# STATIC_ROOT = f'https://{AZURE_CUSTOM_DOMAIN}/{STATIC_LOCATION}/'
-# STATIC_URL = f'https://{AZURE_CUSTOM_DOMAIN}/{STATIC_LOCATION}/'
-# MEDIA_URL = f'https://{AZURE_CUSTOM_DOMAIN}/{MEDIA_LOCATION}/'
-
-# DATA_PATH = 'data'
 key_vault = "nileshkeyvault"
-AZURE_STORAGE_ACCOUNT = gets_secerts(vault_url, "BlobSasUrl")
-# AZURE_VAULT_ACCOUNT = env('AZURE_VAULT_ACCOUNT')
-# AZURE_STORAGE_KEY_NAME = env('AZURE_STORAGE_KEY_NAME')
-AZURE_APP_BLOB_NAME = AZURE_APP_BLOB_NAME
-AZURE_BLOB_PATH = "https://assessmentstgacc.blob.core.windows.net/nileshimagescontainer/nileshimagescontainer"
+AZURE_STORAGE_ACCOUNT = Blob_SAS_URL  # gets_secerts(vault_url, "BlobSasUrl")
 
-# keyvault
-# AZURE_STORAGE_ACCOUNT = gets_secerts(vault_url, "BlobSasUrl")
-# # AZURE_VAULT_ACCOUNT = env('AZURE_VAULT_ACCOUNT')
-# # AZURE_STORAGE_KEY_NAME = env('AZURE_STORAGE_KEY_NAME')
-# AZURE_APP_BLOB_NAME = "nileshimagescontainer"  # enc variable
-# AZURE_BLOB_PATH = "https://assessmentstgacc.blob.core.windows.net/nileshimagescontainer/"  # env variable
+AZURE_APP_BLOB_NAME = AZURE_APP_BLOB_NAME
+AZURE_BLOB_PATH = AZURE_BLOB_PATHS
